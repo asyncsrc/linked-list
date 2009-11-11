@@ -1,0 +1,3 @@
+Working on a templated linked list with sorting and indexing.
+
+Sorting works using STL sort() using custom compare function (i.e. compareNodes())
