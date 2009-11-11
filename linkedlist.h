@@ -22,11 +22,12 @@ public:
 	Node* head;
 	Node* currentNode;
 	int nodeCount;
+	bool sortAscending;
 	
 	//vector< Node*>nodeVec;
 	
 public:
-	LinkedList() : nodeCount(1) {
+	LinkedList() : nodeCount(1), sortAscending(true) {
 		index = ( Node**) malloc(sizeof( Node) * nodeCount);
 		index[nodeCount-1] = ( Node*) malloc(sizeof( Node));
 		index[nodeCount-1]->nodeNum = nodeCount;
@@ -41,7 +42,8 @@ public:
 	void deleteNode( Node* deleteNode);
 	
 	// custom compare functions used in conjunction with std::sort
-	static bool compareNodes(const Node* left, const Node* right);
+	static bool compareNodesASC(const Node* left, const Node* right);
+	static bool compareNodesDESC(const Node* left, const Node* right);
 	
 	
 	void insertNode(N data, Node* shiftPoint);
@@ -85,8 +87,11 @@ void LinkedList<N>::sortNodes() {
 	 index[nodeElem] = nodeVec[nodeElem];
 	 */
 	
-	
-	std::sort(index, index+nodeCount, compareNodes);
+	if (sortAscending)
+		std::sort(index, index+nodeCount, compareNodesASC);
+	else
+		std::sort(index, index+nodeCount, compareNodesDESC);
+
 	
 	// readjust next and prev ptrs (loops are always bottlenecks, huh?)	
 	for (int nodeElem = 0; nodeElem < nodeCount-1; nodeElem++) {
@@ -99,9 +104,14 @@ void LinkedList<N>::sortNodes() {
 
 
 template<class N>
-bool LinkedList<N>::compareNodes(const Node* left, const Node* right) {
+bool LinkedList<N>::compareNodesASC(const Node* left, const Node* right) {
 	
 	return (*left->data < *right->data);
+}
+
+template<class N>
+bool LinkedList<N>::compareNodesDESC(const Node* left, const Node* right) {
+	return (*left->data > *right->data);
 }
 
 template<class N>

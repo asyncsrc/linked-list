@@ -16,16 +16,29 @@ int main() {
 	myList.addNode(5);
 	myList.addNode(23);
 	
+	cout << "Iterating list..." << endl;
+	myList.iterateList();
+	
 	cout << "Sorting list..." << endl;
 	myList.sortNodes();
 	
 	cout << "Iterating list..." << endl;
 	myList.iterateList();
 	
-	cout << "Inserting new node in list..." << endl;
+	cout << "Inserting new node in list with value 325" << endl;
 	myList.insertNode(325, myList[2]);
 	
+	cout << "Iterating list..." << endl;
+	myList.iterateList();
+	
 	cout << "Sorting list..." << endl;
+	myList.sortNodes();
+	
+	cout << "Iterating list..." << endl;
+	myList.iterateList();
+	
+	cout << "Sorting list descending..." << endl;
+	myList.sortAscending = false;
 	myList.sortNodes();
 	
 	cout << "Iterating list..." << endl;
