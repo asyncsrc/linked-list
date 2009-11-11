@@ -19,12 +19,11 @@ int main() {
 	cout << "Sorting list..." << endl;
 	myList.sortNodes();
 	
-	
 	cout << "Iterating list..." << endl;
 	myList.iterateList();
 	
 	cout << "Inserting new node in list..." << endl;
-	myList.insertNode(300, myList[2]);
+	myList.insertNode(325, myList[2]);
 	
 	cout << "Sorting list..." << endl;
 	myList.sortNodes();

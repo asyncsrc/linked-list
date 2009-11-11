@@ -107,6 +107,11 @@ bool LinkedList<N>::compareNodes(const Node* left, const Node* right) {
 template<class N>
 void LinkedList<N>::insertNode(N data, Node* shiftPoint) {
 	
+	if (shiftPoint == NULL) {
+		cout << "Insertion node specified does not exist." << endl;
+		return;
+	}
+	
 	nodeCount++;
 	
 	//reallocate more space
@@ -143,6 +148,11 @@ template<class N>
 void LinkedList<N>::deleteNode( Node* shiftPoint) {
 	
 	Node* temp = shiftPoint;
+	
+	if (temp == NULL) {
+		cout << "Specified node does not exist!" << endl;
+		return;
+	}
 	
 	while (temp->next != NULL) {
 		// shift all the pointers down!
